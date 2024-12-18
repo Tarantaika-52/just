@@ -16,7 +16,11 @@
   width: 100vw;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  animation: title_anim .4s ease-in;
 }
 
 .comming_soon_title{
@@ -34,13 +38,10 @@
 
 @keyframes title_anim {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    opacity: 0;
   }
   100% {
-    background-position: 0% 50%;
+    opacity: 1;
   }
 }
 
@@ -62,6 +63,8 @@
 
 .subtitle{
   text-decoration: none;
+
+  margin: 0;
 
   font-style: normal;
   font-weight: 700;
@@ -103,4 +106,15 @@ a:hover{
   z-index: -9;
   opacity: .15;
   filter: blur(5px);
+
+  animation: bg_anim .35s ease-out;
+}
+
+@keyframes bg_anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .15;
+  }
 }

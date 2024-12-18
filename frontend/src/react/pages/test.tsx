@@ -14,7 +14,7 @@ function DebugPage(){
               <a className='subtitle' href="..">{"at home"}</a>
             </div>
 
-            <img className='background' src="https://i.pinimg.com/736x/7d/26/55/7d26557b7c3a1b202b29d4d517106818.jpg"/>
+            <img className='background' src="https://i.pinimg.com/originals/43/2d/44/432d441351cf372afa7e25020b784bdb.gif"/>
         </>
     )
 }
