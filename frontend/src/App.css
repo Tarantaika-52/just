@@ -11,30 +11,25 @@
 }
 
 .title{
-  filter: drop-shadow(0px 2px 4px rgba(18, 18, 18, 0.15));
+  filter: drop-shadow(0px 2px 4px rgba(18, 18, 18, 0.1));
+
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
 }
 
 .comming_soon_title{
   font-style: normal;
   font-weight: 700;
-  font-size: 128px;
+  
+  font-size: 6vh;
   display: flex;
   align-items: center;
 
   color: var(--white);
 
-  /* background: linear-gradient(68.34deg, var(--light-green) 10.28%, var(--light-blue) 30.1%, var(--purple) 49.92%, var(--yelow) 69.74%, var(--red) 89.56%); */
-
-  /* background-size: 300% 300%;
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent; */
-
   margin: 0;
-
-  /* animation: title_anim 10s ease infinite; */
 }
 
 @keyframes title_anim {
@@ -54,6 +49,7 @@
   bottom: 0;
 
   height: 4vh;
+  width: 100vw;
 
   display: flex;
   align-items: center;
@@ -61,7 +57,7 @@
 
   gap: .2vw;
 
-  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
 }
 
 .subtitle{
@@ -69,7 +65,8 @@
 
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 1.25vh;
 
   display: flex;
   align-items: center;
