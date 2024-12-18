@@ -2,7 +2,7 @@ FROM node:alpine as build
 FROM nginx:stable-alpine as nginx
 
 COPY package.json package.json
-RUN npm install 
+RUN npm install -i
 
 COPY . .
 RUN npm run build
