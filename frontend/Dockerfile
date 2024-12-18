@@ -1,12 +1,13 @@
 FROM node:alpine as build
-FROM nginx:stable-alpine as nginx
+COPY package.json package-lock.json ./
 
-COPY package.json package.json
-RUN npm install -i
+RUN npm install
 
 COPY . .
+
 RUN npm run build
 
+FROM nginx:stable-alpine as nginx
 COPY --from=build /dist /usr/share/nginx/html
 COPY --from=build nginx.conf /etc/nginx/conf.d/default.conf 
 
