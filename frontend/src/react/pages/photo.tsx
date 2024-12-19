@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import BottomBar from "../../widgets/bottom_bar/bottom_bar.tsx";
 
 function PhotoPage() {
 
@@ -27,6 +28,8 @@ function PhotoPage() {
             <div className="title">
                 <img className='photo' src={bg}/>
             </div>
+
+            <BottomBar text={"to home"} link={"/"}/>
 
             <img className='background' src={bg}/>
         </>
