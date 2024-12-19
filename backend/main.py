@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
-from backend.src.routers.file_router import file_router
+from src.routers.file_router import file_router
 
 app = FastAPI()
 
