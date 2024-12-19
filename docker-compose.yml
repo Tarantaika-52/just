@@ -1,6 +1,8 @@
 networks:
   dev:
 
+volumes:
+  postgres-data:
 
 services:
   nginx:
@@ -17,5 +19,16 @@ services:
   frontend:
     build: 
       context: ./frontend
+    networks:
+      - dev
+    
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER: user
+      - POSTGRES_PASSWORD: password
+      - POSTGRES_DB: mydb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     networks:
       - dev

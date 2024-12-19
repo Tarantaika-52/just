@@ -118,3 +118,8 @@ a:hover{
     opacity: .15;
   }
 }
+
+.photo{
+  object-fit: cover;
+  width: 20%;
+}

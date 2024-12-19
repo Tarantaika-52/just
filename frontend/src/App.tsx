@@ -1,16 +1,18 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import "./assets/vars.css"
-import CommingSoonPage from './react/pages/comming_soon'
+import "./app/styles/vars.css"
+import ComingSoonPage from './react/pages/coming_soon.tsx'
 import DebugPage from './react/pages/test'
+import PhotoPage from "./react/pages/photo.tsx";
 
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<CommingSoonPage/>}/>
-        <Route path='/test' element={<DebugPage/>}/>
+          <Route path='/' element={<ComingSoonPage/>}/>
+          <Route path='/test' element={<DebugPage/>}/>
+          <Route path='/im' element={<PhotoPage/>}/>
       </Routes>
     </BrowserRouter>
   )
