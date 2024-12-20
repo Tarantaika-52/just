@@ -1,7 +1,10 @@
 import os.path
-
-from fastapi import APIRouter, HTTPException
+import hashlib
+import random
+from fastapi import APIRouter, HTTPException, File, UploadFile
 from fastapi.responses import FileResponse
+import base64
+import shutil
 
 file_router = APIRouter()
 
@@ -16,6 +19,16 @@ async def get_state_ep():
             "return_hash": ""
         }
     }
+
+@file_router.post("/upload/img")
+async def upload_img_file_ep(file: UploadFile = File(...)):
+    f_name = hashlib.sha256((file.filename.encode() + str(random.randint(0, 9999999)).encode())).hexdigest()
+    f_loc = os.path.join("files/i", f"{f_name}.jpg")
+
+    with open(f_loc, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+
+    return f_name + ".jpg"
 
 @file_router.get("/get/img/{file}")
 async def get_img_by_file_ep(file:str):

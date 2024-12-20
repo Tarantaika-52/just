@@ -9,4 +9,6 @@ COPY . .
 
 EXPOSE 8000
 
+VOLUME /just_data
+
 CMD ["python3", "main.py"]
