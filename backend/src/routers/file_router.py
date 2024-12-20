@@ -22,8 +22,12 @@ async def get_state_ep():
 
 @file_router.post("/upload/img")
 async def upload_img_file_ep(file: UploadFile = File(...)):
+    if (not os.path.exists("/just_data/files")):
+        os.mkdir("/just_data/files")
+        os.mkdir("/just_data/files/i")
+
     f_name = hashlib.sha256((file.filename.encode() + str(random.randint(0, 9999999)).encode())).hexdigest()
-    f_loc = os.path.join("files/i", f"{f_name}.jpg")
+    f_loc = os.path.join("/just_data/files/i", f"{f_name}.jpg")
 
     with open(f_loc, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
@@ -32,7 +36,7 @@ async def upload_img_file_ep(file: UploadFile = File(...)):
 
 @file_router.get("/get/img/{file}")
 async def get_img_by_file_ep(file:str):
-    im_path = os.path.join(f"files/i", file)
+    im_path = os.path.join(f"/just_data/files/i", file)
 
     if (not os.path.isfile(im_path)):
         raise HTTPException(status_code=404, detail="file not found :(")
