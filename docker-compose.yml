@@ -2,7 +2,7 @@ networks:
   dev:
 
 volumes:
-  postgres-data:
+  app-data:
 
 services:
   nginx:
@@ -22,7 +22,8 @@ services:
       context: ./backend
     networks:
       - dev
-
+    volumes:
+      - app-data:/just_data
 
   frontend:
     build: 
