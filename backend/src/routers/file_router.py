@@ -27,6 +27,8 @@ async def upload_img_file_ep(file: UploadFile = File(...)):
         os.mkdir("/just_data/files/i")
 
     f_name = hashlib.sha256((file.filename.encode() + str(random.randint(0, 9999999)).encode())).hexdigest()
+    f_name = f_name[8:32]
+
     f_loc = os.path.join("/just_data/files/i", f"{f_name}.jpg")
 
     with open(f_loc, "wb") as buffer:
