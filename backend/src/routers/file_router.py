@@ -1,7 +1,7 @@
 import os.path
 import hashlib
 import random
-from fastapi import APIRouter, HTTPException, File, UploadFile
+from fastapi import APIRouter, HTTPException, File, UploadFile, Response
 from fastapi.responses import FileResponse
 import shutil
 
@@ -27,8 +27,13 @@ async def upload_img_file_ep(file: UploadFile = File(...)):
     return f_name + "." + f_format
 
 @file_router.get("/get/img/ls")
-async def get_images_list():
+async def get_images_list(response: Response):
     im_path = "/just_data/files/i"
+
+    #Не кешировать
+    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
 
     return os.listdir(im_path)
 
