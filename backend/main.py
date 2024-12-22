@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
 from src.routers.file_router import file_router
+from src.routers.text_router import text_router
 
 app = FastAPI()
 
@@ -15,6 +16,7 @@ app.add_middleware(
 )
 
 app.include_router(file_router, prefix="/f")
+app.include_router(text_router, prefix="/t")
 
 if __name__ == "__main__":
     print("running...")

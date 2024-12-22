@@ -3,38 +3,34 @@ import hashlib
 import random
 from fastapi import APIRouter, HTTPException, File, UploadFile
 from fastapi.responses import FileResponse
-import base64
 import shutil
 
 file_router = APIRouter()
-
-@file_router.get("/state")
-async def get_state_ep():
-    return {
-        "data":{
-            "server_message": "all right"
-        },
-        "meta":{
-            "country": "RU",
-            "return_hash": ""
-        }
-    }
 
 @file_router.post("/upload/img")
 async def upload_img_file_ep(file: UploadFile = File(...)):
     if (not os.path.exists("/just_data/files")):
         os.mkdir("/just_data/files")
+    if (not os.path.exists("/just_data/files/i")):
         os.mkdir("/just_data/files/i")
 
     f_name = hashlib.sha256((file.filename.encode() + str(random.randint(0, 9999999)).encode())).hexdigest()
     f_name = f_name[8:32]
 
-    f_loc = os.path.join("/just_data/files/i", f"{f_name}.jpg")
+    f_format = file.filename.split(".")[-1]
+
+    f_loc = os.path.join("/just_data/files/i", f"{f_name}.{f_format}")
 
     with open(f_loc, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    return f_name + ".jpg"
+    return f_name + "." + f_format
+
+@file_router.get("/get/img/ls")
+async def get_images_list():
+    im_path = "/just_data/files/i"
+
+    return os.listdir(im_path)
 
 @file_router.get("/get/img/{file}")
 async def get_img_by_file_ep(file:str):
