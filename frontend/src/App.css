@@ -97,16 +97,15 @@ a:hover{
 
   position: absolute;
 
-  top: -10vh;
-
   object-fit: cover;
-  width: 120vw;
-  height: 120vh;
+  width: 100vw;
+  height: 100vh;
 
   z-index: -9;
   opacity: .15;
   filter: blur(5px);
 
+  transition: .1s linear;
   animation: bg_anim .35s ease-out;
 }
 
