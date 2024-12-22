@@ -11,6 +11,7 @@ services:
       - "80:80"
     volumes:
       - './nginx.conf:/etc/nginx/nginx.conf'
+      - app-data:/just_data
     depends_on:
       - frontend
       - backend
