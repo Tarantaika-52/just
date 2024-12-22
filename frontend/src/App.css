@@ -99,7 +99,7 @@ a:hover{
 
   object-fit: cover;
   width: 100vw;
-  height: 120vw;
+  height: 100vh;
 
   z-index: -9;
   opacity: .15;
