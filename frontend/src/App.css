@@ -105,7 +105,6 @@ a:hover{
   opacity: .15;
   filter: blur(5px);
 
-  transition: .1s linear;
   animation: bg_anim .35s ease-out;
 }
 

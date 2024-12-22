@@ -6,6 +6,7 @@ export default function RandomBackground(){
 
     const [isLoading, setIsLoading] = useState(true);
     const [bg_array, set_bg_array] = useState([]);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -24,10 +25,15 @@ export default function RandomBackground(){
     }
 
     return (
-        <img
-            className='background'
-            src={`${API_URL}f/get/img/${bg_array[getRandomInt(bg_array.length)]}`}
-            alt="Random Background"
-        />
+        <>
+            {!imageLoaded && <></>}
+            <img
+                className='background'
+                src={`${API_URL}f/get/img/${bg_array[getRandomInt(bg_array.length)]}`}
+                alt="Random Background"
+                onLoad={() => setImageLoaded(true)}
+                style={{ display: imageLoaded ? 'block' : 'none' }}
+            />
+        </>
     );
 }
