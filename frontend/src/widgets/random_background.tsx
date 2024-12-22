@@ -11,6 +11,9 @@ export default function RandomBackground(){
     useEffect(() => {
         (async () => {
             const imgs = await get_images_list();
+
+            console.log(imgs);
+
             set_bg_array(imgs);
             setIsLoading(false);
         })();
