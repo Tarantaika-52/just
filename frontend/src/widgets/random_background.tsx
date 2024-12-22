@@ -31,7 +31,7 @@ export default function RandomBackground(){
                 className='background'
                 src={`${API_URL}f/get/img/${bg_array[getRandomInt(bg_array.length)]}`}
                 alt="Random Background"
-                onLoad={() => setTimeout(() => {setImageLoaded(true)}, 200)}
+                onLoad={() => setImageLoaded(true)}
                 style={{ display: imageLoaded ? 'block' : 'none' }}
             />
         </>
