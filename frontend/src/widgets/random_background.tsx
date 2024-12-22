@@ -4,20 +4,30 @@ import {API_URL} from "../features/api/Public.ts";
 
 export default function RandomBackground(){
 
+    const [isLoading, setIsLoading] = useState(true);
+    const [bg_array, set_bg_array] = useState([]);
+
     useEffect(() => {
         (async () => {
-            const boards = await get_images_list();
-            set_bg_array(boards);
+            const imgs = await get_images_list();
+            set_bg_array(imgs);
+            setIsLoading(false);
         })();
     }, [])
-
-    const [bg_array, set_bg_array] = useState([]);
 
     function getRandomInt(max:number) {
         return Math.floor(Math.random() * Number(max));
     }
 
+    if (isLoading) {
+        return <></>;
+    }
+
     return (
-        <img className='background' src={`${API_URL}f/get/img/${bg_array[getRandomInt(bg_array.length)]}`}/>
-    )
+        <img
+            className='background'
+            src={`${API_URL}f/get/img/${bg_array[getRandomInt(bg_array.length)]}`}
+            alt="Random Background"
+        />
+    );
 }
