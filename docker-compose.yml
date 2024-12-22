@@ -30,3 +30,5 @@ services:
       context: ./frontend
     networks:
       - dev
+    volumes:
+      - app-data:/just_data
