@@ -8,6 +8,9 @@ RUN npm run build
 
 FROM nginx:latest
 
+RUN mkdir -p /just_data/nginx_cache && \
+    chown -R nginx:nginx /just_data/nginx_cache
+
 COPY --from=build /dist /usr/share/nginx/html
 COPY --from=build nginx.conf /etc/nginx/conf.d/default.conf
 
