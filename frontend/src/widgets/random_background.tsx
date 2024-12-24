@@ -29,13 +29,15 @@ export default function RandomBackground(){
 
     return (
         <>
-            {!imageLoaded && <></>}
             <img
                 className='background'
                 src={`${API_URL}f/get/img/${bg_array[getRandomInt(bg_array.length)]}`}
                 alt="Random Background"
                 onLoad={() => setImageLoaded(true)}
-                style={{ display: imageLoaded ? 'block' : 'none' }}
+                style={{
+                    display: imageLoaded ? 'block' : 'none',
+                    animation: imageLoaded ? "bg_anim .35s ease-out" : "none"
+                }}
             />
         </>
     );
